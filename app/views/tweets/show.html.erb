@@ -1,6 +1,7 @@
 <h1>id: <%= @tweet.id %> のツイート詳細ページ</h1>
 
-<p><%= @tweet.content %></p>
+<p>日付： <%= @tweet.date %></p>
+<p>ツイート： <%= @tweet.content %></p>
 
 <%= link_to '一覧に戻る', tweets_path %>
 <%= link_to 'このツイートを編集する', edit_tweet_path(@tweet) %>

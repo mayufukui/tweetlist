@@ -2,7 +2,7 @@
 
 <ul>
   <% @tweets.each do |tweet| %>
-    <li><%= link_to tweet.id, tweet %> : <%= tweet.content %></li>
+    <li><%= link_to tweet.id, tweet %> : <%= tweet.date %> &gt; <%= tweet.content %></li>
   <% end %>
 </ul>
 
