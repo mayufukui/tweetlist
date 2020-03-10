@@ -5,5 +5,6 @@
     <li><%= link_to tweet.id, tweet %> : <%= tweet.date %> &gt; <%= tweet.content %></li>
   <% end %>
 </ul>
+<%= paginate @tweets %>
 
 <%= link_to '新規ツイートの投稿', new_tweet_path %>
