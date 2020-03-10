@@ -1,10 +1,11 @@
 class TweetsController < ApplicationController
+  before_action :set_tweet, only: [:show, :edit, :update, :destroy]
+  
   def index
     @tweets = Tweet.all
   end
     
   def show  
-    @tweet = Tweet.find(params[:id])
   end
     
   def new
@@ -24,12 +25,9 @@ class TweetsController < ApplicationController
   end
     
   def edit
-    @tweet = Tweet.find(params[:id])
   end
     
   def update
-    @tweet = Tweet.find(params[:id])
-    
     if @tweet.update(tweet_params)
       flash[:success] = 'Tweet は正常に更新されました'
       redirect_to @tweet
@@ -40,7 +38,6 @@ class TweetsController < ApplicationController
   end
     
   def destroy
-    @tweet = Tweet.find(params[:id])
     @tweet.destroy
     
     flash[:success] = 'Tweet は正常に削除されました'
@@ -48,6 +45,10 @@ class TweetsController < ApplicationController
   end
   
   private
+  
+  def set_tweet
+    @tweet = Tweet.find(params[:id])
+  end
   
   def tweet_params
     params.require(:tweet).permit(:content)
