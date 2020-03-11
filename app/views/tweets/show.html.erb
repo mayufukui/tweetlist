@@ -1,8 +1,20 @@
 <h1>id: <%= @tweet.id %> のツイート詳細ページ</h1>
 
-<p>日付： <%= @tweet.date %></p>
-<p>ツイート： <%= @tweet.content %></p>
+<table class="table table-bordered">
+  <tr>
+    <th>id</th>
+    <td><%= @tweet.id %></td>
+  </tr>
+  <tr>
+    <th>日付</th>
+    <td><%= @tweet.date %></td>
+  </tr>
+  <tr>
+    <th>ツイート</th>
+    <td><%= @tweet.content %></td>
+  </tr>
+</table>
 
-<%= link_to '一覧に戻る', tweets_path %>
-<%= link_to 'このツイートを編集する', edit_tweet_path(@tweet) %>
-<%= link_to 'このツイートを削除する', @tweet, method: :delete, data: { confirm: '本当に削除してよろしいでしょうか？' } %>
+<%= link_to '一覧に戻る', tweets_path, class: 'btn btn-light' %>
+<%= link_to 'このツイートを編集する', edit_tweet_path(@tweet), class: 'btn btn-info' %>
+<%= link_to 'このツイートを削除する', @tweet, method: :delete, data: { confirm: '本当に削除してよろしいでしょうか？' }, class: 'btn btn-danger' %>

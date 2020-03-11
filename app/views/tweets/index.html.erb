@@ -1,10 +1,27 @@
 <h1>ツイート一覧</h1>
 
-<ul>
-  <% @tweets.each do |tweet| %>
-    <li><%= link_to tweet.id, tweet %> : <%= tweet.date %> &gt; <%= tweet.content %></li>
-  <% end %>
-</ul>
-<%= paginate @tweets %>
+<% if @tweets.any? %>
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>id</th>
+        <th>日付</th>
+        <th>ツイート</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @tweets.each do |tweet| %>
+        <tr>
+          <td><%= link_to tweet.id, tweet %></td>
+          <td><%= tweet.date %></td>
+          <td><%= tweet.content %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+  <div>
+    <%= paginate @tweets %>
+  </div>
+<% end %>
 
-<%= link_to '新規ツイートの投稿', new_tweet_path %>
+<%= link_to '新規ツイートの投稿', new_tweet_path, class: "btn btn-primary" %>
